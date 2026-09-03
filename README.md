@@ -314,14 +314,23 @@ More broadly, the project demonstrates the value of combining descriptive epidem
 
 # 14. References
 
-America’s 250th: Reflecting on progress against HIV. HIV.gov. (2026, July 24). https://www.hiv.gov/blog/americas-250th-reflecting-on-progress-against-hiv 
-Centers for Disease Control and Prevention. (n.d.). Fast facts: HIV in the United States. Centers for Disease Control and Prevention. https://www.cdc.gov/hiv/data-research/facts-stats/index.html 
-Centers for Disease Control and Prevention. NCHHSTP AtlasPlus. https://www.cdc.gov/nchhstp/about/atlasplus.html. Accessed August 26, 2026
-Copeland, C., Martins, R., Thaliffdeen, R., Kotsopoulos, N., Jarrett, J., Chaudhari, P., Mordi, U., & Postma, M. J. (2025). The HIV Epidemic in the United States - Epidemiological Projections and Public Economic Impact of Achieving Zero Transmission Goals. ClinicoEconomics and outcomes research : CEOR, 17, 755–769. https://doi.org/10.2147/CEOR.S565189
-Grapevine, R. (2025, February 6). Georgia leads in U.S. HIV cases. here’s why the Lifesaving Drug Prep faces barriers in the State. Georgia Public Broadcasting. https://www.gpb.org/news/2025/02/06/georgia-leads-in-us-hiv-cases-heres-why-the-lifesaving-drug-prep-faces-barriers-in 
-Harrist, A. (2018, April 6). Department of Health: Summary of reportable diseases 2017 Annual Report. Wyoming Department of Health. https://health.wyo.gov/wp-content/uploads/2018/05/2017-Annual-Report_Draft_V1.3_Combined.pdf 
-Hendricks, S., Huynh, A., Burns, D. T., Pena, S., & Johnson, P. (2026). "Viral Suppression Among Rural and Urban People Living With HIV in Wyoming". AIDS research and treatment, 2026, 7353282. https://doi.org/10.1155/arat/7353282
-HIV & AIDS trends and U.S. statistics overview. HIV.gov. (n.d.). https://www.hiv.gov/hiv-basics/overview/data-and-trends/statistics 
-Purcell, D. J., Standifer, M., Martin, E., Rivera, M., & Hopkins, J. (2025). Disparities in HIV Care: A Rural-Urban Analysis of Healthcare Access and Treatment Adherence in Georgia. Healthcare (Basel, Switzerland), 13(12), 1374. https://doi.org/10.3390/healthcare13121374
-U.S. Health and Human Services, (2019, August 18). America’s HIV Epidemic Analysis Dashboard (AHEAD). Retrieved August 21, 2026, from https://ahead.hiv.gov
+1. America’s 250th: Reflecting on progress against HIV. HIV.gov. (2026, July 24). https://www.hiv.gov/blog/americas-250th-reflecting-on-progress-against-hiv 
+
+2. Centers for Disease Control and Prevention. (n.d.). Fast facts: HIV in the United States. Centers for Disease Control and Prevention. https://www.cdc.gov/hiv/data-research/facts-stats/index.html 
+
+3. Centers for Disease Control and Prevention. NCHHSTP AtlasPlus. https://www.cdc.gov/nchhstp/about/atlasplus.html. Accessed August 26, 2026
+
+4. Copeland, C., Martins, R., Thaliffdeen, R., Kotsopoulos, N., Jarrett, J., Chaudhari, P., Mordi, U., & Postma, M. J. (2025). The HIV Epidemic in the United States - Epidemiological Projections and Public Economic Impact of Achieving Zero Transmission Goals. ClinicoEconomics and outcomes research : CEOR, 17, 755–769. https://doi.org/10.2147/CEOR.S565189
+
+5. Grapevine, R. (2025, February 6). Georgia leads in U.S. HIV cases. here’s why the Lifesaving Drug Prep faces barriers in the State. Georgia Public Broadcasting. https://www.gpb.org/news/2025/02/06/georgia-leads-in-us-hiv-cases-heres-why-the-lifesaving-drug-prep-faces-barriers-in 
+
+6. Harrist, A. (2018, April 6). Department of Health: Summary of reportable diseases 2017 Annual Report. Wyoming Department of Health. https://health.wyo.gov/wp-content/uploads/2018/05/2017-Annual-Report_Draft_V1.3_Combined.pdf 
+
+7. Hendricks, S., Huynh, A., Burns, D. T., Pena, S., & Johnson, P. (2026). "Viral Suppression Among Rural and Urban People Living With HIV in Wyoming". AIDS research and treatment, 2026, 7353282. https://doi.org/10.1155/arat/7353282
+
+8. HIV & AIDS trends and U.S. statistics overview. HIV.gov. (n.d.). https://www.hiv.gov/hiv-basics/overview/data-and-trends/statistics 
+
+9. Purcell, D. J., Standifer, M., Martin, E., Rivera, M., & Hopkins, J. (2025). Disparities in HIV Care: A Rural-Urban Analysis of Healthcare Access and Treatment Adherence in Georgia. Healthcare (Basel, Switzerland), 13(12), 1374. https://doi.org/10.3390/healthcare13121374
+
+10. U.S. Health and Human Services, (2019, August 18). America’s HIV Epidemic Analysis Dashboard (AHEAD). Retrieved August 21, 2026, from https://ahead.hiv.gov
 
