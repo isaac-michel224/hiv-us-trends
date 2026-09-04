@@ -5,19 +5,16 @@ my_packages <- c("tidyverse","readxl","tigris",
 # Load them all at once
 lapply(my_packages, library, character.only = TRUE)
 
-#Import and .csv file of HIV diagnosis in state and Covariates
-
-
+# Import and .csv file of HIV diagnosis in state and Covariates
 hdiag <- read_csv("data/table_data.csv")
 cov <- read_csv("data/Covariates_HIV.csv")
-view(cov)
 
-#Warning on Data: Due to the impact of the COVID-19 pandemic, HIV diagnoses data for the year 2020 should be interpreted with caution.
+# Warning on Data: Due to the impact of the COVID-19 pandemic, 
+# HIV diagnoses data for the year 2020 should be interpreted with caution.
 data <- hdiag
 head(data)
 
-view(data)
-#Convert Data from Wide to Long
+# Convert Data from Wide to Long
 hiv_long <- data %>%
   pivot_longer(
     cols = `2017`:`2024`,
@@ -29,15 +26,13 @@ hiv_long <- hiv_long %>%
   mutate(year = as.numeric(year))
 head(hiv_long)
 
-#Change Format of cov
+# Change Format of cov
 cov2 <- cov
 
 colnames(cov2)
 head(cov2)
 
-view(cov2)
-
-#Rename Indicators
+# Rename Indicators
 unique(cov2$Indicator)
 cov2 <- cov2 %>%
   mutate(
@@ -58,9 +53,7 @@ cov_wide <- cov2 %>%
     values_from = Percent
   )
 
-view(cov_wide)
-
-#Adjust Year Column to only have numbers
+# Adjust Year Column to only have numbers
 cov_wide <- cov_wide %>%
   mutate(
     Year = as.numeric(sub(" .*", "", Year))
@@ -70,14 +63,13 @@ unique(cov_wide$Year)
 
 unique(hiv_long$year)
 
-#Temporarily: Remove 2024 data
+# Temporarily: Remove 2024 data
 hiv_data <- hiv_long %>%
   filter(year != 2024)
 
 unique(hiv_data$year)
 
-
-#Join HIV Data with Covariates
+# Join HIV Data with Covariates
 colnames(hiv_data)
 colnames(cov_wide)
 
@@ -95,7 +87,7 @@ unique(cov_wide$State)
 
 unique(hiv_data$State)
 
-#Remove 'National' & Others from Dataset
+# Remove 'National' & Others from Dataset
 hiv_data <- hiv_data %>%
   filter(!State %in% c("National","District of Columbia","Puerto Rico"))
 
@@ -108,21 +100,18 @@ colnames(cov_data)
 colnames(hiv_data)
 
 # Join Two Datasets
-
 hiv_panel <- hiv_data %>%
   left_join(cov_data,
             by = c("State", "Year")
 
   )
 
-view(hiv_panel)
 unique(hiv_panel$State)
 
-#Check for Nulls
+# Check for Nulls
 colSums(is.na(hiv_panel)) #Zero Values with Nulls
 
-#Correlation Matrices
-
+# Correlation Matrices
 library(corrplot)
 library(Hmisc)
 
@@ -147,15 +136,14 @@ corrplot(
 )
 
 
-#Perform Fixed Effects Model with new dataset: hiv_panel
-
+# Perform Fixed Effects Model with new dataset: hiv_panel
 mydata <- hiv_panel[, c("diagnosis_rate",
                         "poverty_rate",
                         "low_education",
                         "uninsured_rate",
                         "vacant_housing_rate")]
 
-#Model 1 — Cross-sectional/pool model
+# Model 1 — Cross-sectional/pool model
 model <- feols(
   diagnosis_rate ~
     poverty_rate +
@@ -167,7 +155,7 @@ model <- feols(
 
 summary(model)
 
-#Model_2 - State Fixed Effects (No Year)
+# Model_2 - State Fixed Effects (No Year)
 model_2 <- feols(
   diagnosis_rate ~
     poverty_rate +
@@ -181,7 +169,7 @@ model_2 <- feols(
 
 summary(model_2)
 
-#Model_3 - Two Way Fixed Effects (State + Year)
+# Model_3 - Two Way Fixed Effects (State + Year)
 model_3 <- feols(
   diagnosis_rate ~
     poverty_rate +
@@ -195,8 +183,7 @@ model_3 <- feols(
 
 summary(model_3)
 
-#Table for All 3 Models - Part I
-
+# Table for All 3 Models - Part I
 library(sjPlot)
 
 tab_model(
@@ -218,8 +205,7 @@ tab_model(
   )
 )
 
-#Diagnostics
-
+# Diagnostics
 model_2_clustered <- feols(
   diagnosis_rate ~
     poverty_rate +
@@ -232,9 +218,9 @@ model_2_clustered <- feols(
 
 summary(model_2_clustered)
 
-#Models Part II: Remove Covariates, Poverty and Education, Separately
+# Models Part II: Remove Covariates, Poverty and Education, Separately
 
-#2A: No Poverty
+# 2A: No Poverty
 
 model_2a <- feols(
   diagnosis_rate ~
@@ -260,7 +246,6 @@ model_2b <- feols(
 
 summary(model_2b)
 
-
 tab_model(
   model_2a, model_2b,
   title = "<b>Table 2. Sensitivity analysis: 
@@ -280,7 +265,7 @@ tab_model(
 )
 
 
-#Within-state poverty/education correlation
+# Within-state poverty/education correlation
 hiv_panel %>%
   group_by(State) %>%
   mutate(
@@ -298,7 +283,7 @@ hiv_panel %>%
 
 library(car)
 
-#VIF Scores
+# VIF Scores
 vif(
   lm(
     diagnosis_rate ~
@@ -310,9 +295,7 @@ vif(
   )
 )
 
-
-#----Coefficient Plot as Alternative Table 1 
-
+# Coefficient Plot as Alternative Table 1 
 coefplot(
   list(model,
   model_2,
@@ -330,11 +313,11 @@ coefplot(
   ref.line = 0,
   drop = "Constant"
 )
-#Legend for the Coefficient Plot
+
+# Legend for the Coefficient Plot
 legend("topright", col = 1:3, pch = 20, lwd = 1, lty = 1:3,
        legend = c("Cross-Sectional", "State FE", "State + Year FE"),
        title = "Model")
-
 
 #-------------------------------------------------------------------------------
 
