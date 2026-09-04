@@ -135,8 +135,8 @@ corrplot(
   col = colorRampPalette(c("#b2182b", "white", "#3a86d4"))(200)
 )
 
-png(filename = "correlation_matrix.png")
-pdf(file = "correlation_matrix.pdf")
+png(filename = "correlation_matrix.png", width = 800, height = 800, res = 120)
+
 
 dev.off()
 
@@ -301,6 +301,8 @@ vif(
   )
 )
 
+png("fixest_coefplot.png")
+
 # Coefficient Plot as Alternative Table 1 
 coefplot(
   list(model,
@@ -324,8 +326,6 @@ coefplot(
 legend("topright", col = 1:3, pch = 20, lwd = 1, lty = 1:3,
        legend = c("Cross-Sectional", "State FE", "State + Year FE"),
        title = "Model")
-
-png("fixest_coefplot.png")
 
 dev.off() 
 
