@@ -103,8 +103,6 @@ hiv_data <- hiv_data %>%
 cov_data <- cov_wide %>%
   filter(State != "District of Columbia")
 
-
-
 unique(hiv_data$State)
 
 colnames(cov_data)
@@ -124,12 +122,10 @@ unique(hiv_panel$State)
 #Check for Nulls
 colSums(is.na(hiv_panel)) #Zero Values with Nulls
 
-
 #Correlation Matrices
 
 library(corrplot)
 library(Hmisc)
-
 
 mydata <- hiv_panel[, c("poverty_rate",
                         "low_education",
@@ -152,16 +148,13 @@ corrplot(
 )
 
 
+#Perform Fixed Effects Model with new dataset: hiv_panel
 
 mydata <- hiv_panel[, c("diagnosis_rate",
                         "poverty_rate",
                         "low_education",
                         "uninsured_rate",
                         "vacant_housing_rate")]
-
-
-#Perform Fixed Effects Model with new dataset: hiv_panel
-
 
 #Model 1 — Cross-sectional/pool model
 model <- feols(
@@ -201,9 +194,7 @@ model_3 <- feols(
   cluster = ~State
 )
 
-
 summary(model_3)
-
 
 #Table for All 3 Models - Part I
 
@@ -306,7 +297,6 @@ hiv_panel %>%
     )
   )
 
-
 library(car)
 
 #VIF Scores
@@ -320,7 +310,6 @@ vif(
     data = hiv_panel
   )
 )
-
 
 
 #----Coefficient Plot as Alternative Table 1 
@@ -348,49 +337,7 @@ legend("topright", col = 1:3, pch = 20, lwd = 1, lty = 1:3,
        title = "Model")
 
 
-
 #-------------------------------------------------------------------------------
-# #Linear Model Visualization Between Variables
-# ggplot(hiv_panel,
-#        aes(x = uninsured_rate, y = diagnosis_rate)) +
-#   geom_point() +
-#   geom_smooth(method = "lm") +
-#   theme_minimal()
-# 
 
-#---------------------------------------------------------------------------------------
-
-# #Check on Variation
-# cov_var <- hiv_panel %>%
-#   group_by(State) %>%
-#   summarise(
-#     poverty_change = max(poverty_rate, na.rm = TRUE) -
-#       min(poverty_rate, na.rm = TRUE),
-#     
-#     uninsured_change = max(uninsured_rate, na.rm = TRUE) -
-#       min(uninsured_rate, na.rm = TRUE),
-#     
-#     education_change = max(low_education, na.rm = TRUE) -
-#       min(low_education, na.rm = TRUE),
-#     
-#     vacant_housing_change = max(vacant_housing_rate, na.rm = TRUE) -
-#       min(vacant_housing_rate, na.rm = TRUE)
-#   )
-# 
-# 
-# diag_variation <- hiv_panel %>%
-#   group_by(State) %>%
-#   summarise(
-#     diagnosis_change = max(diagnosis_rate, na.rm = TRUE) -
-#       min(diagnosis_rate, na.rm = TRUE)
-#   )
-# 
-# print(diag_variation, n = 50)
-# print(cov_var, n = 50)
-
-# random <- plm(diagnosis_rate ~ poverty_rate, data=hiv_panel, 
-#               index=c("State", "Year"), model="random")
-# phtest(fixed,random) #Hausman Test was significant (p-value = 0.0001601); thus, fixed effects work
-# #Check on Variation
 
 
