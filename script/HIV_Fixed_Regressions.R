@@ -6,8 +6,7 @@ my_packages <- c("tidyverse","readxl","tigris",
 lapply(my_packages, library, character.only = TRUE)
 
 #Import and .csv file of HIV diagnosis in state and Covariates
-#hdiag <- read_csv("C:/Users/isaac/Downloads/table_data.csv")
-#cov <- read_csv("C:/Users/isaac/Downloads/Covariates_HIV.csv")
+
 
 hdiag <- read_csv("data/table_data.csv")
 cov <- read_csv("data/Covariates_HIV.csv")
