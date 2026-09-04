@@ -135,6 +135,10 @@ corrplot(
   col = colorRampPalette(c("#b2182b", "white", "#3a86d4"))(200)
 )
 
+png(filename = "correlation_matrix.png")
+pdf(file = "correlation_matrix.pdf")
+
+dev.off()
 
 # Perform Fixed Effects Model with new dataset: hiv_panel
 mydata <- hiv_panel[, c("diagnosis_rate",
@@ -321,7 +325,7 @@ legend("topright", col = 1:3, pch = 20, lwd = 1, lty = 1:3,
        legend = c("Cross-Sectional", "State FE", "State + Year FE"),
        title = "Model")
 
-png("fixest_coefplot.png", width = 800, height = 600)
+png("fixest_coefplot.png")
 
 dev.off() 
 
