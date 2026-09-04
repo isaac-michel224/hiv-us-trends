@@ -321,6 +321,10 @@ legend("topright", col = 1:3, pch = 20, lwd = 1, lty = 1:3,
        legend = c("Cross-Sectional", "State FE", "State + Year FE"),
        title = "Model")
 
+png("fixest_coefplot.png", width = 800, height = 600)
+
+dev.off() 
+
 #-------------------------------------------------------------------------------
 
 
