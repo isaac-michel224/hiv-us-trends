@@ -47,6 +47,8 @@ ggplot(
   ) + 
   theme_minimal()
 
+ggsave("line_chart_national.png")
+
 #Line Chart for National vs. Certain States
 
 #Specify States to Visualize on Plot
@@ -81,6 +83,9 @@ ggplot(
   ) + 
   theme_minimal(base_family = "Corbel") + 
   theme(plot.title = element_text(hjust = 0.5))
+
+
+ggsave("multi_line.png")
 
 #Animate It
 
@@ -119,6 +124,9 @@ p <- ggplot(
 
 
 animate(p, renderer = gifski_renderer())
+
+anim_save("graph.gif")
+
 #-----------------------------------------------------------------------------------------------------
 
 #Choropleth Maps of the United States
@@ -178,6 +186,9 @@ ggplot(map24) +
       hjust = 0.5)
       )
 
+ggsave("map_2024.png")
+
+
 #2017 Map
 
 #Data: state and year and rename year data to 'diagnosis_rate
@@ -220,6 +231,9 @@ ggplot(map17) +
                                     face = "bold",
                                     hjust = 0.5))
 
+
+ggsave("map_2017.png")
+
 #Horizontal Bar Chart
 
 habs_change <- hdiag %>%
@@ -246,6 +260,7 @@ ggplot(
     hjust = 0.5)
   )
 
+ggsave("US_Change.png")
 
 #-------------------------------------------------------------------------------------------
 #Top States
@@ -346,6 +361,9 @@ p2 <- ggplot(
   )
 
 animate(p2)
+
+anim_save("graph_2.gif")
+
 #-------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------
 
