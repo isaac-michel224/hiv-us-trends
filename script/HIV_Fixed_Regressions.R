@@ -135,10 +135,10 @@ corrplot(
   col = colorRampPalette(c("#b2182b", "white", "#3a86d4"))(200)
 )
 
-png(filename = "correlation_matrix.png", width = 800, height = 800, res = 120)
+#png(filename = "correlation_matrix.png", width = 800, height = 800, res = 120)
 
 
-dev.off()
+#dev.off()
 
 # Perform Fixed Effects Model with new dataset: hiv_panel
 mydata <- hiv_panel[, c("diagnosis_rate",
@@ -207,8 +207,12 @@ tab_model(
     "vacant_housing_rate" = "Vacant Housing",
     "poverty_rate" = "Poverty"
   ),
-  file = "Table-1.doc"
+  file = "Table-1.html"
 )
+
+library(webshot)
+webshot("Table-1.html", "Table-1.png")
+
 
 # Diagnostics
 model_2_clustered <- feols(
@@ -267,9 +271,10 @@ tab_model(
     "vacant_housing_rate" = "Vacant Housing",
     "poverty_rate" = "Poverty"
   ), 
-  file = "Table-2.doc"
+  file = "Table-2.html"
 )
 
+webshot("Table-2.html", "Table-2.png")
 
 # Within-state poverty/education correlation
 hiv_panel %>%
@@ -317,7 +322,7 @@ coefplot(
     uninsured_rate = "Uninsured",
     vacant_housing_rate = "Vacant housing"
   ),
-  main = "Association Between Socioeconomic Indicators and HIV Diagnosis Rates",
+  main = "Socioeconomic Indicators vs. HIV Diagnosis Rates",
   ref.line = 0,
   drop = "Constant"
 )
