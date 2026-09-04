@@ -202,7 +202,8 @@ tab_model(
     "uninsured_rate" = "Uninsured",
     "vacant_housing_rate" = "Vacant Housing",
     "poverty_rate" = "Poverty"
-  )
+  ),
+  file = "Table-1.doc"
 )
 
 # Diagnostics
@@ -261,7 +262,8 @@ tab_model(
     "uninsured_rate" = "Uninsured",
     "vacant_housing_rate" = "Vacant Housing",
     "poverty_rate" = "Poverty"
-  )
+  ), 
+  file = "Table-2.doc"
 )
 
 
