@@ -4,22 +4,22 @@ my_packages <- c("tidyverse","readxl","tigris","sf","gganimate","gifski")
 # Load them all at once
 lapply(my_packages, library, character.only = TRUE)
 
-#Import and .csv file of HIV diagnosis in state
+# Import and .csv file of HIV diagnosis in state
 hdiag <- read_csv("data/table_data.csv")
 #Warning on Data: Due to the impact of the COVID-19 pandemic, HIV diagnoses data for the year 2020 should be interpreted with caution.
 
-#Insert Calculations into the Dataset
-#Rate of Change
+# Insert Calculations into the Dataset
+# Rate of Change
 hdiag <- hdiag %>%
   mutate(absolute_change = `2024` - `2017`)
 view(hdiag)
 
-#Percent change
+# Percent change
 hdiag <- hdiag %>%
   mutate(percent_change = (`2024` - `2017`)/(`2017`)*(100))
 view(hdiag)
 
-#Create a Line Chart of HIV diagnosis rate, 2017 - 2024
+# Create a Line Chart of HIV diagnosis rate, 2017 - 2024
 head(hdiag)
 #Convert Data from Wide to Long
 hiv_long <- hdiag %>%
@@ -32,7 +32,7 @@ hiv_long <- hiv_long %>%
   mutate(year = as.numeric(year))
 head(hiv_long)
 
-#Line Chart for the National HIV Diagnosis Rate
+# Line Chart for the National HIV Diagnosis Rate
 ggplot(
   hiv_long %>% filter(State == "National"),
   aes(x = year, y = diagnosis_rate)
@@ -49,9 +49,9 @@ ggplot(
 
 ggsave("line_chart_national.png")
 
-#Line Chart for National vs. Certain States
+# Line Chart for National vs. Certain States
 
-#Specify States to Visualize on Plot
+# Specify States to Visualize on Plot
 selected_states <- hiv_long %>%
   filter(State %in% c("National", "Vermont", 
                       "Georgia", 
@@ -59,7 +59,7 @@ selected_states <- hiv_long %>%
                       "Wyoming"
                       ))
 
-#Create Multi-Line Visualization
+# Create Multi-Line Visualization
 ggplot(
   selected_states,
   aes(x = year, y = diagnosis_rate, color = State)
@@ -87,7 +87,7 @@ ggplot(
 
 ggsave("multi_line.png")
 
-#Animate It
+# Animate It
 
 p <- ggplot(
   selected_states,
@@ -129,21 +129,21 @@ anim_save("graph.gif")
 
 #-----------------------------------------------------------------------------------------------------
 
-#Choropleth Maps of the United States
+# Choropleth Maps of the United States
 
-#Pull Census Geographic Boundaries for the United States
+# Pull Census Geographic Boundaries for the United States
 states <- tigris::states(cb = TRUE)
 head(states)
 
-#Visualize to Take a Look at the U.S. Boundaries
+# Visualize to Take a Look at the U.S. Boundaries
 ggplot(states) +
   geom_sf() +
   theme_void()
 
 
-#2024 Map
+# 2024 Map
 
-#Data: state and year and rename year data to 'diagnosis_rate
+# Data: state and year and rename year data to 'diagnosis_rate
 hiv_2024 <- hdiag %>%
   select(State, `2024`) %>%
   rename(
@@ -152,7 +152,7 @@ hiv_2024 <- hdiag %>%
 
 head(hiv_2024)
 
-#Join dataset with map
+# Join dataset with map
 
 states_hiv_2024 <- states %>%
   left_join(
@@ -169,7 +169,7 @@ map24 <- states_hiv_2024 %>%
                        "United States Virgin Islands","American Samoa"
                        ))
 
-#Visualize
+# Visualize
 
 ggplot(map24) +
   geom_sf(aes(fill = diagnosis_rate)) +
@@ -189,7 +189,7 @@ ggplot(map24) +
 ggsave("map_2024.png")
 
 
-#2017 Map
+# 2017 Map
 
 #Data: state and year and rename year data to 'diagnosis_rate
 hiv_2017 <- hdiag %>%
@@ -199,7 +199,7 @@ hiv_2017 <- hdiag %>%
   )
 
 
-#Join dataset with map
+# Join dataset with map
 
 states_hiv_2017 <- states %>%
   left_join(
@@ -216,7 +216,7 @@ map17 <- states_hiv_2017 %>%
                       "United States Virgin Islands","American Samoa"
   ))
 
-#Visualize
+# Visualize
 
 ggplot(map17) +
   geom_sf(aes(fill = diagnosis_rate)) +
@@ -234,7 +234,7 @@ ggplot(map17) +
 
 ggsave("map_2017.png")
 
-#Horizontal Bar Chart
+# Horizontal Bar Chart
 
 habs_change <- hdiag %>%
   select(State, absolute_change)
@@ -263,9 +263,9 @@ ggplot(
 ggsave("US_Change.png")
 
 #-------------------------------------------------------------------------------------------
-#Top States
+# Top States
 
-#Findings: Before I excluded Washington D.C. and Puerto Rico,  
+#Findings: Before I excluded Washington D.C. and Puerto Rico from the data,  
 #D.C. had the highest HIV diagnosis rate for every year from 2017-2024
 #For the lowest diagnosis rates, Wyoming (2017-2018, 2021), 
 #Vermont (2019, 2022-2023), Maine (2020), and New Hampshire(2024)
@@ -287,14 +287,14 @@ lowest_by_year
 
 hiv_long$State
 
-#Remote non-U.S. States and Territories from Dataset
+# Remote non-U.S. States and Territories from Dataset
 hiv_long_2 <- hiv_long %>%
   filter(!State %in% c("National",
                       "District of Columbia",
                       "Puerto Rico")
   )
 
-#Find the Top 5 states for each year
+# Find the Top 5 states for each year
 
 #Georgia had the highest diagnosis rate among all U.S. states
 #every year rom 2017 - 2024
@@ -308,7 +308,8 @@ top5_by_year <- hiv_long_2 %>%
   ungroup()
 
 top5_by_year
-#Mode: Most Frequent Value that Appears in the data
+
+# Mode: Most Frequent Value that Appears in the data
 
 get_mode <- function(x) {
   uniq_x <- table(x)
@@ -316,10 +317,11 @@ get_mode <- function(x) {
 }
 
 get_mode(top5_by_year$State)
+
 #Florida, Georgia, and Louisiana appear frequently as the top
 #U.S. states with the highest HIV diagnosis rates from 2017-2024
 #----------------------------------------------------------------------------
-#Animated Bar Chart
+# Animated Bar Chart
 hiv_anim <- hiv_long %>%
   filter(State %in% c("Louisiana",
                        "Georgia",
