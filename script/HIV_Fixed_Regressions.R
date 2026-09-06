@@ -207,7 +207,7 @@ tab_model(
     "vacant_housing_rate" = "Vacant Housing",
     "poverty_rate" = "Poverty"
   ),
-  file = "Table-1.html"
+  #file = "Table-1.html"
 )
 
 library(webshot)
@@ -271,10 +271,10 @@ tab_model(
     "vacant_housing_rate" = "Vacant Housing",
     "poverty_rate" = "Poverty"
   ), 
-  file = "Table-2.html"
+#  file = "Table-2.html"
 )
 
-webshot("Table-2.html", "Table-2.png")
+#webshot("Table-2.html", "Table-2.png")
 
 # Within-state poverty/education correlation
 hiv_panel %>%
@@ -306,7 +306,7 @@ vif(
   )
 )
 
-png("fixest_coefplot.png")
+#png("fixest_coefplot.png")
 
 # Coefficient Plot as Alternative Table 1 
 coefplot(
@@ -332,7 +332,7 @@ legend("topright", col = 1:3, pch = 20, lwd = 1, lty = 1:3,
        legend = c("Cross-Sectional", "State FE", "State + Year FE"),
        title = "Model")
 
-dev.off() 
+#dev.off() 
 
 #-------------------------------------------------------------------------------
 
