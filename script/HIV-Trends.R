@@ -186,7 +186,7 @@ ggplot(map24) +
       hjust = 0.5)
       )
 
-ggsave("map_2024.png")
+#ggsave("map_2024.png")
 
 
 # 2017 Map
@@ -232,7 +232,7 @@ ggplot(map17) +
                                     hjust = 0.5))
 
 
-ggsave("map_2017.png")
+#ggsave("map_2017.png")
 
 # Horizontal Bar Chart
 
