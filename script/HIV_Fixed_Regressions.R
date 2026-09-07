@@ -210,10 +210,6 @@ tab_model(
   #file = "Table-1.html"
 )
 
-library(webshot)
-webshot("Table-1.html", "Table-1.png")
-
-
 # Diagnostics
 model_2_clustered <- feols(
   diagnosis_rate ~
