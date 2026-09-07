@@ -42,7 +42,9 @@ The analysis addressed three primary questions:
 
 The primary outcome was the **HIV diagnosis rate**, defined as the number of people receiving an HIV diagnosis per 100,000 population.
 
-HIV data were obtained from the CDC's America's HIV Epidemic Analysis Dashboard (AHEAD). State-level socioeconomic data were obtained from publicly available CDC data containing measures of social and structural conditions.
+HIV data were obtained from the Centers for Disease Control and Prevention (CDC) and America's HIV Epidemic Analysis Dashboard (AHEAD). 
+
+State-level socioeconomic data were obtained from publicly available CDC data containing measures of social and structural conditions.
 
 The analysis included:
 
